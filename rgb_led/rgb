@@ -1,0 +1,39 @@
+int redPin=9;
+int greenPin=10;
+int bluePin=11;
+
+int potPin_red=A0;
+int potPin_green=A1;
+int potPin_blue=A2;
+
+int potValue_red=0;
+int potValue_green=0;
+int potValue_blue=0;
+
+int redValue=0;
+int greenValue=0;
+int blueValue=0;
+
+void setup() {
+  pinMode(potPin_red,INPUT);
+  pinMode(potPin_green,INPUT);
+  pinMode(potPin_blue,INPUT);
+  
+  pinMode(redPin,OUTPUT);
+  pinMode(greenPin,OUTPUT);
+  pinMode(bluePin,OUTPUT);
+  }
+
+void loop() {
+  potValue_red=analogRead(potPin_red);
+  potValue_green=analogRead(potPin_green);
+  potValue_blue=analogRead(potPin_blue);
+  
+  redValue=map( potValue_red,0,1023,0,255);
+  greenValue=map( potValue_green,0,1023,0,255);
+  blueValue=map( potValue_blue,0,1023,0,255);
+  
+  analogWrite(redPin,redValue);
+  analogWrite(greenPin,greenValue);
+  analogWrite(bluePin,blueValue);
+  }
